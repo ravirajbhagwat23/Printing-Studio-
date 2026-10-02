@@ -1,0 +1,9 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:fromYDelta="0" android:toYDelta="40"
+        android:duration="2000" android:repeatCount="infinite"/>
+    <alpha
+        android:fromAlpha="1" android:toAlpha="0"
+        android:startOffset="800" android:duration="1200"
+        android:repeatCount="infinite"/>
+</set>

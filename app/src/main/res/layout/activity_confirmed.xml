@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/success_bg"
+        android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="✅" android:textSize="28sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Order confirmed" android:textStyle="bold" android:textColor="@color/greenSuccess" />
+        <TextView android:id="@+id/tvOrderId" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/greenSuccess" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" android:text="Status: Placed" android:textStyle="bold" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:text="Order summary" android:textStyle="bold" />
+
+    <TextView android:id="@+id/tvSummary" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" android:background="@drawable/card_bg" android:padding="14dp" />
+
+    <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+
+    <Button android:id="@+id/btnTrack" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Track order" android:backgroundTint="@color/bluePrimary" android:textColor="#FFFFFF" />
+
+    <Button android:id="@+id/btnBackHome" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" android:text="Back to home"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+</LinearLayout>
