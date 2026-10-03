@@ -45,14 +45,29 @@
         android:hint="Email address"
         android:inputType="textEmailAddress" />
 
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password (min 6 characters)"
+        android:inputType="textPassword" />
+
     <Button
         android:id="@+id/btnEmailLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Continue with email"
+        android:text="Log in"
         android:backgroundTint="@color/bluePrimary"
         android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Create account"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,6 +75,15 @@
         android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
         android:text="or" />
+    <TextView
+        android:id="@+id/tvForgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:padding="8dp"
+        android:text="Forgot password?"
+        android:textColor="@color/bluePrimary" />
+
 
     <Button
         android:id="@+id/btnGoogleLogin"
