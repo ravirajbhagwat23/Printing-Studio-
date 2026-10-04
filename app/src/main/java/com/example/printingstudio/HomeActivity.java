@@ -1,15 +1,30 @@
 package com.example.printingstudio;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.graphics.pdf.PdfRenderer;
+import android.provider.OpenableColumns;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity {
 
     TextView tvFileName, tvCopies, tvPrice;
     Button btnBw, btnColor, btnNormal, btnUrgent, btnConfirm;
+
+    private final ActivityResultLauncher<String[]> picker =
+            registerForActivityResult(new ActivityResultContracts.OpenDocument(), uri -> {
+                if (uri != null) handleFile(uri);
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
 
         btnConfirm.setOnClickListener(v -> {
             if (store.fileName == null) return;
-            // TODO: call POST /orders here; server returns the authoritative order + price
             store.submitOrder();
             startActivity(new Intent(this, OrderConfirmedActivity.class));
         });
@@ -60,10 +74,39 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void chooseFile() {
-        // TODO: launch a real file picker (Intent.ACTION_GET_CONTENT) and read actual page count
-        OrderStore.get().fileName = "assignment.pdf";
-        OrderStore.get().pageCount = 12;
-        refresh();
+        picker.launch(new String[]{"application/pdf"});
+    }
+
+    private void handleFile(Uri uri) {
+        String name = "document.pdf";
+        Cursor c = null;
+        try {
+            c = getContentResolver().query(uri, null, null, null, null);
+            if (c != null && c.moveToFirst()) {
+                int i = c.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                if (i >= 0) name = c.getString(i);
+            }
+        } catch (Exception ignored) {
+        } finally {
+            if (c != null) c.close();
+        }
+
+        ParcelFileDescriptor pfd = null;
+        PdfRenderer renderer = null;
+        try {
+            pfd = getContentResolver().openFileDescriptor(uri, "r");
+            renderer = new PdfRenderer(pfd);
+            OrderStore.get().fileName = name;
+            OrderStore.get().pageCount = renderer.getPageCount();
+            refresh();
+        } catch (Exception e) {
+            Toast.makeText(this, "Could not read this PDF", Toast.LENGTH_LONG).show();
+        } finally {
+            if (renderer != null) renderer.close();
+            if (pfd != null) {
+                try { pfd.close(); } catch (IOException ignored) {}
+            }
+        }
     }
 
     private void setPrintType(String type) {
@@ -78,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void refresh() {
         OrderStore store = OrderStore.get();
-        tvFileName.setText(store.fileName == null ? "Tap to upload file" : store.fileName);
+        tvFileName.setText(store.fileName == null ? "Tap to upload file" : store.fileName + " (" + store.pageCount + " pages)");
         tvCopies.setText(String.valueOf(store.copies));
         tvPrice.setText("Estimated price: ₹" + (int) store.estimatedPrice());
 

@@ -1,10 +1,15 @@
 package com.example.printingstudio;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-// Simple in-memory singleton holding app state. No backend yet —
-// TODO: replace with real API calls per the Database & Login spec.
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class OrderStore {
     private static OrderStore instance;
 
@@ -33,12 +38,29 @@ public class OrderStore {
         return rate * multiplier * pageCount * copies;
     }
 
-    // TODO: replace with real POST /orders call; server returns authoritative price.
     public Order submitOrder() {
         String id = "C-" + (1000 + (int) (Math.random() * 9000));
         Order order = new Order(id, fileName, pageCount, printType, speed, copies);
         activeOrder = order;
         history.add(0, order);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("orderId", id);
+        data.put("userId", user != null ? user.getUid() : "");
+        data.put("userEmail", user != null ? user.getEmail() : "");
+        data.put("fileName", fileName);
+        data.put("pageCount", pageCount);
+        data.put("printType", printType);
+        data.put("speed", speed);
+        data.put("copies", copies);
+        data.put("price", order.price());
+        data.put("status", Order.PLACED);
+        data.put("createdAt", FieldValue.serverTimestamp());
+
+        FirebaseFirestore.getInstance().collection("orders").add(data);
+
         return order;
     }
 
