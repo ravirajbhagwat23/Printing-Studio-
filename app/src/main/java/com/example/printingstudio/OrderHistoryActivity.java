@@ -40,6 +40,12 @@ public class OrderHistoryActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNav.setup(this, R.id.nav_history);
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -77,7 +83,9 @@ public class OrderHistoryActivity extends AppCompatActivity {
                                 speed != null ? speed : Order.NORMAL,
                                 copies != null ? copies.intValue() : 1);
                         String status = doc.getString("status");
-                        if (status != null) o.status = status;
+                        String sd = doc.getString("sides");
+                        if (sd != null) o.sides = sd;
+                        if (status != null) o.status = status.trim();
                         orders.add(o);
                     }
                     adapter.notifyDataSetChanged();

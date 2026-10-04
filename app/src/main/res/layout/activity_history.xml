@@ -2,14 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
     android:orientation="vertical"
     android:padding="20dp">
 
     <Button android:id="@+id/btnBack" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="← Back" style="@style/Widget.MaterialComponents.Button.TextButton" />
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" android:text="Order history" android:textSize="18sp" android:textStyle="bold" />
+        android:text="Order history" android:textSize="18sp" android:textStyle="bold" />
 
     <TextView android:id="@+id/tvEmpty" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginTop="16dp" android:text="No orders yet." android:visibility="gone" />
@@ -17,7 +24,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrders"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginTop="12dp" />
+
+</LinearLayout>
+
+<include layout="@layout/layout_bottom_nav" />
 
 </LinearLayout>
