@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 
@@ -38,16 +40,18 @@ public class OrderTrackingActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Order order = OrderStore.get().activeOrder;
-        if (order == null) return;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (order == null || user == null) return;
 
         listener = FirebaseFirestore.getInstance()
                 .collection("orders")
+                .whereEqualTo("userId", user.getUid())
                 .whereEqualTo("orderId", order.id)
                 .addSnapshotListener((snap, e) -> {
                     if (snap == null || snap.isEmpty()) return;
                     String status = snap.getDocuments().get(0).getString("status");
                     if (status != null) {
-                        order.status = status;
+                        order.status = status.trim();
                         refresh(order);
                     }
                 });
