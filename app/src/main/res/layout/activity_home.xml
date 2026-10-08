@@ -1,202 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/ps_bg">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp">
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="New print order"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="History"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
-
-        <Button
-            android:id="@+id/btnProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Profile"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/ps_header_bg" android:padding="22dp" android:paddingTop="44dp" android:paddingBottom="28dp">
+        <TextView android:id="@+id/tvGreeting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hi there" android:textColor="#BFD2FF" android:textSize="14sp" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="What are we printing today?" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="B/W ₹2" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="Color ₹10" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="Urgent 2×" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="College Print Shop · pickup on campus" android:textColor="#BFD2FF" android:textSize="12sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/uploadBox"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@drawable/upload_box">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/tvFileName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tap to upload file"
-            android:textColor="@color/blueDark"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnChooseFile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Choose file"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+    <LinearLayout android:id="@+id/trackCard" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="vertical" android:padding="16dp" android:background="@drawable/ps_card" android:visibility="gone" android:clickable="true" android:focusable="true">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track your order" android:textColor="@color/ps_muted" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:id="@+id/tvTrackTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="#C-0000" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="16sp" android:maxLines="1" android:ellipsize="end" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal">
+            <View android:id="@+id/trk1" android:layout_width="0dp" android:layout_height="8dp" android:layout_weight="1" android:layout_marginEnd="4dp" android:background="@drawable/ps_track_off" />
+            <View android:id="@+id/trk2" android:layout_width="0dp" android:layout_height="8dp" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/ps_track_off" />
+            <View android:id="@+id/trk3" android:layout_width="0dp" android:layout_height="8dp" android:layout_weight="1" android:layout_marginStart="4dp" android:background="@drawable/ps_track_off" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="horizontal">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Placed" android:textColor="@color/ps_muted" android:textSize="12sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="Printing" android:textColor="@color/ps_muted" android:textSize="12sp" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="end" android:text="Ready" android:textColor="@color/ps_muted" android:textSize="12sp" />
+        </LinearLayout>
+        <TextView android:id="@+id/tvTrackStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="" android:textColor="@color/ps_blue" android:textStyle="bold" android:textSize="14sp" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="PRINT TYPE"
-        android:textStyle="bold"
-        android:textSize="12sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnBw"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"
-            android:text="B/W · ₹2/pg"
-            android:textAllCaps="false"
-            android:background="@drawable/chip_selected" />
-
-        <Button
-            android:id="@+id/btnColor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:text="Color · ₹10/pg"
-            android:textAllCaps="false"
-            android:background="@drawable/chip_unselected" />
+    <LinearLayout android:id="@+id/uploadBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp" android:background="@drawable/ps_card" android:clickable="true" android:focusable="true">
+        <ImageView android:layout_width="44dp" android:layout_height="44dp" android:padding="10dp" android:background="@drawable/ps_nav_active" android:src="@drawable/ic_nav_order" app:tint="#2F6FED" xmlns:app="http://schemas.android.com/apk/res-auto" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:orientation="vertical">
+            <TextView android:id="@+id/tvFileName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tap to upload file" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" android:maxLines="2" android:ellipsize="end" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/tvFileHint" android:text="PDF, Word, PowerPoint, image or text file" android:textColor="@color/ps_muted" android:textSize="12sp" />
+        </LinearLayout>
+        <TextView android:id="@+id/btnChooseFile" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Choose" android:textColor="#2F6FED" android:textStyle="bold" android:padding="8dp" android:clickable="true" android:focusable="true" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="SPEED"
-        android:textStyle="bold"
-        android:textSize="12sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnNormal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"
-            android:text="Normal"
-            android:textAllCaps="false"
-            android:background="@drawable/chip_selected" />
-
-        <Button
-            android:id="@+id/btnUrgent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:text="Urgent · 2x price"
-            android:textAllCaps="false"
-            android:background="@drawable/chip_unselected" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="Print type" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:orientation="horizontal">
+        <TextView android:id="@+id/btnBw" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="B/W · ₹2/pg" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+        <TextView android:id="@+id/btnColor" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Color · ₹10/pg" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="Sides" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:orientation="horizontal">
+        <TextView android:id="@+id/btnSingle" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="Single side" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+        <TextView android:id="@+id/btnDouble" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Back to back" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="Speed" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:orientation="horizontal">
+        <TextView android:id="@+id/btnNormal" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="Normal" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+        <TextView android:id="@+id/btnUrgent" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Urgent · 2× price" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:background="@drawable/card_bg"
-        android:padding="14dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Copies"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="−"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-
-        <TextView
-            android:id="@+id/tvCopies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:text="1"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/btnPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/ps_card" android:padding="14dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Copies" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
+        <TextView android:id="@+id/btnMinus" android:layout_width="44dp" android:layout_height="44dp" android:gravity="center" android:text="−" android:textSize="22sp" android:textColor="@color/ps_ink" android:background="@drawable/ps_seg_off" android:clickable="true" android:focusable="true" />
+        <TextView android:id="@+id/tvCopies" android:layout_width="48dp" android:layout_height="wrap_content" android:gravity="center" android:text="1" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/ps_ink" />
+        <TextView android:id="@+id/btnPlus" android:layout_width="44dp" android:layout_height="44dp" android:gravity="center" android:text="+" android:textSize="22sp" android:textColor="@color/ps_ink" android:background="@drawable/ps_seg_off" android:clickable="true" android:focusable="true" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="College Print Shop · On campus"
-        android:textColor="@color/neutral500"
-        android:textSize="12sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="vertical" android:background="@drawable/ps_card" android:padding="16dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Order summary" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
+        <TextView android:id="@+id/tvBreakdown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Upload a PDF to see the price" android:textColor="@color/ps_muted" android:textSize="13sp" />
+        <TextView android:id="@+id/btnEditPages" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:paddingVertical="6dp" android:text="Wrong page count? Edit pages" android:textColor="#2F6FED" android:textStyle="bold" android:textSize="13sp" android:visibility="gone" android:clickable="true" android:focusable="true" />
+        <TextView android:id="@+id/tvSheets" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="" android:textColor="@color/ps_muted" android:textSize="13sp" />
+        <TextView android:id="@+id/tvPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Estimated price: ₹0" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="20sp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Estimated price: ₹0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Confirm order"
-        android:backgroundTint="@color/bluePrimary"
-        android:textColor="#FFFFFF" />
+    <TextView android:id="@+id/btnConfirm" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="16dp" android:gravity="center" android:text="Confirm order" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="16sp" android:background="@drawable/ps_btn_primary" android:clickable="true" android:focusable="true" />
 
 </LinearLayout>
+</LinearLayout>
 </ScrollView>
+
+<include layout="@layout/layout_bottom_nav" />
+
+</LinearLayout>

@@ -15,6 +15,7 @@ public class Order {
     public String printType; // bw | color
     public String speed;     // normal | urgent
     public int copies;
+    public String sides = "single"; // single | double (back to back)
     public String status;
 
     public Order(String id, String fileName, int pageCount, String printType, String speed, int copies) {
@@ -27,12 +28,17 @@ public class Order {
         this.status = PLACED;
     }
 
-    // Mirrors the backend formula for live UI preview only.
-    // Real total must always come from the server response.
+    // Paper sheets used: single side = 1 sheet per page, back to back = 1 sheet per 2 pages.
+    public int sheets() {
+        int perCopy = "double".equals(sides) ? (pageCount + 1) / 2 : pageCount;
+        return perCopy * copies;
+    }
+
+    // Price is charged per sheet. Must match the Firestore rules formula.
     public double price() {
         double rate = printType.equals(COLOR) ? 10.0 : 2.0;
         double multiplier = speed.equals(URGENT) ? 2.0 : 1.0;
-        return rate * multiplier * pageCount * copies;
+        return rate * multiplier * sheets();
     }
 
     public String printTypeLabel() {
