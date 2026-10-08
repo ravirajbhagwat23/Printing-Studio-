@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ps_ink">#10213F</color>
+    <color name="ps_blue">#2F6FED</color>
+    <color name="ps_blue_soft">#E6EEFF</color>
+    <color name="ps_bg">#F2F5FA</color>
+    <color name="ps_muted">#7A8499</color>
+    <color name="ps_line">#D9DFEA</color>
+    <color name="ps_amber">#FFB547</color>
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:orientation="horizontal"
+    android:background="#FFFFFF"
+    android:elevation="12dp"
+    android:paddingHorizontal="12dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout android:id="@+id/nav_order" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_margin="4dp" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true">
+        <ImageView android:id="@+id/nav_order_icon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_nav_order" />
+        <TextView android:id="@+id/nav_order_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New order" android:textSize="12sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/nav_history" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_margin="4dp" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true">
+        <ImageView android:id="@+id/nav_history_icon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_nav_history" />
+        <TextView android:id="@+id/nav_history_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="History" android:textSize="12sp" android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/nav_profile" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:layout_margin="4dp" android:orientation="vertical" android:gravity="center" android:clickable="true" android:focusable="true">
+        <ImageView android:id="@+id/nav_profile_icon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_nav_profile" />
+        <TextView android:id="@+id/nav_profile_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Profile" android:textSize="12sp" android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
