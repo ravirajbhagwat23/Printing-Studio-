@@ -6,15 +6,37 @@
 <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/ps_header_bg" android:padding="22dp" android:paddingTop="44dp" android:paddingBottom="28dp">
-        <TextView android:id="@+id/tvGreeting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hi there" android:textColor="#BFD2FF" android:textSize="14sp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="What are we printing today?" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="B/W ₹2" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="Color ₹10" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8dp" android:background="@drawable/ps_pill" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:text="Urgent 2×" android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingTop="44dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                <TextView android:id="@+id/tvGreeting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hi there" android:textColor="@color/ps_muted" android:textSize="14sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Print anything.\nPick it up on campus." android:textColor="@color/ps_ink" android:textSize="24sp" android:textStyle="bold" />
+            </LinearLayout>
+            <TextView android:id="@+id/tvHomeAvatar" android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:text="R" android:textColor="#FFFFFF" android:textSize="20sp" android:textStyle="bold" android:background="@drawable/ps_avatar" />
         </LinearLayout>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="College Print Shop · pickup on campus" android:textColor="#BFD2FF" android:textSize="12sp" />
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="vertical" android:background="@drawable/ps_ticket" android:paddingVertical="16dp" android:paddingHorizontal="8dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Black &amp; white" android:textColor="#9FB4DD" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="₹2" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="per page" android:textColor="#9FB4DD" android:textSize="12sp" />
+            </LinearLayout>
+            <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#33FFFFFF" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Color" android:textColor="#9FB4DD" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="₹10" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="per page" android:textColor="#9FB4DD" android:textSize="12sp" />
+            </LinearLayout>
+            <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#33FFFFFF" />
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:paddingHorizontal="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Back to back" android:textColor="#9FB4DD" android:textSize="12sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="1 sheet" android:textColor="#FFFFFF" android:textSize="24sp" android:textStyle="bold" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="= 2 pages" android:textColor="#9FB4DD" android:textSize="12sp" />
+            </LinearLayout>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:layout_marginStart="12dp" android:text="College Print Shop · pickup on campus" android:textColor="#9FB4DD" android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
 
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="20dp" android:paddingBottom="20dp">
@@ -54,12 +76,6 @@
         <TextView android:id="@+id/btnSingle" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="Single side" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
         <TextView android:id="@+id/btnDouble" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Back to back" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
     </LinearLayout>
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="Speed" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:orientation="horizontal">
-        <TextView android:id="@+id/btnNormal" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="Normal" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
-        <TextView android:id="@+id/btnUrgent" android:layout_width="0dp" android:layout_height="46dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Urgent · 2× price" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
-    </LinearLayout>
-
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/ps_card" android:padding="14dp">
         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Copies" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" />
         <TextView android:id="@+id/btnMinus" android:layout_width="44dp" android:layout_height="44dp" android:gravity="center" android:text="−" android:textSize="22sp" android:textColor="@color/ps_ink" android:background="@drawable/ps_seg_off" android:clickable="true" android:focusable="true" />

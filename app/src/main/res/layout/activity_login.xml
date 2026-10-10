@@ -1,96 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#FFFFFF">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/ps_bg" android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@color/blueLight"
-        android:padding="20dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_print" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Printing Studio"
-            android:textStyle="bold"
-            android:textColor="@color/blueDark"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ready to print?"
-            android:textColor="@color/blueDark"
-            android:textSize="12sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/ps_header_bg" android:paddingHorizontal="24dp" android:paddingTop="56dp" android:paddingBottom="40dp">
+        <TextView android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:text="PS" android:textColor="@color/ps_ink" android:textSize="19sp" android:textStyle="bold" android:background="@drawable/ps_avatar_white" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="Printing Studio" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Order prints from your phone.\nCollect them at the college print shop." android:textColor="#C9D8FF" android:textSize="14sp" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Email address"
-        android:inputType="textEmailAddress" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="20dp" android:layout_marginTop="-22dp" android:orientation="vertical" android:background="@drawable/ps_card" android:padding="20dp" android:elevation="4dp">
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password (min 6 characters)"
-        android:inputType="textPassword" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:id="@+id/tabLogin" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:layout_marginEnd="5dp" android:gravity="center" android:text="Log in" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_on" />
+            <TextView android:id="@+id/tabSignup" android:layout_width="0dp" android:layout_height="44dp" android:layout_weight="1" android:layout_marginStart="5dp" android:gravity="center" android:text="Sign up" android:textStyle="bold" android:textSize="14sp" android:clickable="true" android:focusable="true" android:background="@drawable/ps_seg_off" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/btnEmailLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Log in"
-        android:backgroundTint="@color/bluePrimary"
-        android:textColor="#FFFFFF" />
+        <TextView android:id="@+id/tvFormTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Welcome back" android:textColor="@color/ps_ink" android:textSize="20sp" android:textStyle="bold" />
+        <TextView android:id="@+id/tvFormSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Log in to place and track your orders." android:textColor="@color/ps_muted" android:textSize="13sp" />
 
-    <Button
-        android:id="@+id/btnSignup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Create account"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <EditText android:id="@+id/etUsername" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="16dp" android:background="@drawable/ps_input" android:paddingHorizontal="16dp" android:hint="Your name (shown as Hi, name)" android:inputType="textPersonName|textCapWords" android:maxLength="24" android:textSize="15sp" android:textColor="@color/ps_ink" android:textColorHint="@color/ps_muted" android:visibility="gone" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal"
-        android:text="or" />
-    <TextView
-        android:id="@+id/tvForgot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="8dp"
-        android:text="Forgot password?"
-        android:textColor="@color/bluePrimary" />
+        <EditText android:id="@+id/etEmail" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:background="@drawable/ps_input" android:paddingHorizontal="16dp" android:hint="Email address" android:inputType="textEmailAddress" android:textSize="15sp" android:textColor="@color/ps_ink" android:textColorHint="@color/ps_muted" />
 
+        <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp">
+            <EditText android:id="@+id/etPassword" android:layout_width="match_parent" android:layout_height="52dp" android:background="@drawable/ps_input" android:paddingStart="16dp" android:paddingEnd="64dp" android:hint="Password" android:inputType="textPassword" android:textSize="15sp" android:textColor="@color/ps_ink" android:textColorHint="@color/ps_muted" />
+            <TextView android:id="@+id/btnShowPw" android:layout_width="wrap_content" android:layout_height="52dp" android:layout_gravity="end" android:gravity="center" android:paddingHorizontal="16dp" android:text="Show" android:textColor="@color/ps_blue" android:textStyle="bold" android:textSize="13sp" android:clickable="true" android:focusable="true" />
+        </FrameLayout>
 
-    <Button
-        android:id="@+id/btnGoogleLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Continue with Google"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <EditText android:id="@+id/etConfirm" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="12dp" android:background="@drawable/ps_input" android:paddingHorizontal="16dp" android:hint="Confirm password" android:inputType="textPassword" android:textSize="15sp" android:textColor="@color/ps_ink" android:textColorHint="@color/ps_muted" android:visibility="gone" />
 
+        <TextView android:id="@+id/btnForgot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="end" android:layout_marginTop="8dp" android:paddingVertical="6dp" android:text="Forgot password?" android:textColor="@color/ps_blue" android:textStyle="bold" android:textSize="13sp" android:clickable="true" android:focusable="true" />
+
+        <LinearLayout android:id="@+id/termsRow" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" android:gravity="center_vertical" android:visibility="gone">
+            <CheckBox android:id="@+id/cbTerms" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:id="@+id/tvTerms" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="I agree to the Terms and Conditions and the Privacy Policy" android:textColor="@color/ps_ink" android:textSize="13sp" android:clickable="true" android:focusable="true" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvError" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="" android:textColor="#D92D2D" android:textSize="13sp" android:visibility="gone" />
+
+        <TextView android:id="@+id/btnSubmit" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="16dp" android:gravity="center" android:text="Log in" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="16sp" android:background="@drawable/ps_btn_primary" android:clickable="true" android:focusable="true" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:gravity="center" android:text="or" android:textColor="@color/ps_muted" android:textSize="13sp" />
+
+        <TextView android:id="@+id/btnGoogle" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="10dp" android:gravity="center" android:text="Continue with Google" android:textColor="@color/ps_ink" android:textStyle="bold" android:textSize="15sp" android:background="@drawable/ps_input" android:clickable="true" android:focusable="true" />
+    </LinearLayout>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:layout_marginBottom="24dp" android:gravity="center" android:text="By continuing you accept our Terms and Conditions." android:textColor="@color/ps_muted" android:textSize="12sp" />
 </LinearLayout>
+</ScrollView>

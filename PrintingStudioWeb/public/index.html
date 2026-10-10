@@ -270,32 +270,40 @@ function downloadFile(id, o, btn) {
   return withBusy(btn, "Downloading...", async (p) => saveBlob(await fetchFile(id, o, p), o.fileName));
 }
 
-// PDF, images and text open the print dialog directly. Word and PowerPoint files
-// cannot be printed from a browser, so they are downloaded to open and print.
+// Opens the file in a new tab so it can be printed. PDF and images are shown in the
+// browser's own viewer (press Ctrl + P there). Word and PowerPoint files cannot be
+// shown in a browser, so they are downloaded to open and print from Word or PowerPoint.
 function printFile(id, o, btn) {
+  const win = window.open("", "_blank");   // opened on the click so the browser does not block it
+  if (win) win.document.write("<p style='font-family:sans-serif'>Preparing your file...</p>");
   return withBusy(btn, "Preparing...", async (p) => {
-    const blob = await fetchFile(id, o, p);
-    const type = blob.type || "";
-    const name = (o.fileName || "").toLowerCase();
-    const printable = type === "application/pdf" || type.startsWith("image/") || type === "text/plain" ||
-                      /\.(pdf|png|jpe?g|webp|gif|bmp|txt)$/.test(name);
-    if (!printable) {
-      saveBlob(blob, o.fileName);
-      alert("Word and PowerPoint files cannot be printed from the browser. The file was downloaded. Open it and print from there.");
-      return;
+    try {
+      const blob = await fetchFile(id, o, p);
+      const type = blob.type || "";
+      const name = (o.fileName || "").toLowerCase();
+      const isPdf = type === "application/pdf" || name.endsWith(".pdf");
+      const isImg = type.startsWith("image/") || /\.(png|jpe?g|webp|gif|bmp)$/.test(name);
+      const isTxt = type === "text/plain" || name.endsWith(".txt");
+      if (!isPdf && !isImg && !isTxt) {
+        if (win) win.close();
+        saveBlob(blob, o.fileName);
+        alert("Word and PowerPoint files cannot be printed from the browser. The file was downloaded. Open it and print from there.");
+        return;
+      }
+      const typed = isPdf ? new Blob([blob], { type: "application/pdf" }) : blob;
+      const url = URL.createObjectURL(typed);
+      if (!win) { saveBlob(blob, o.fileName); alert("The browser blocked the new tab, so the file was downloaded instead."); return; }
+      if (isImg) {
+        win.document.open();
+        win.document.write("<html><body style='margin:0'><img src='" + url + "' style='max-width:100%' onload='setTimeout(function(){window.print()},300)'></body></html>");
+        win.document.close();
+      } else {
+        win.location.href = url;
+      }
+    } catch (e) {
+      if (win) win.close();
+      throw e;
     }
-    const url = URL.createObjectURL(blob);
-    const frame = document.createElement("iframe");
-    frame.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;";
-    frame.onload = () => {
-      setTimeout(() => {
-        try { frame.contentWindow.focus(); frame.contentWindow.print(); }
-        catch (e) { window.open(url, "_blank"); }
-      }, 500);
-    };
-    frame.src = url;
-    document.body.appendChild(frame);
-    setTimeout(() => { frame.remove(); URL.revokeObjectURL(url); }, 120000);
   });
 }
 

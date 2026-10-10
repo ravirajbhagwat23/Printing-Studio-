@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListenerRegistration trackListener;
 
     TextView tvFileName, tvCopies, tvPrice, tvBreakdown, tvSheets, tvGreeting;
-    TextView btnBw, btnColor, btnNormal, btnUrgent, btnSingle, btnDouble, btnConfirm;
+    TextView btnBw, btnColor, btnSingle, btnDouble, btnConfirm;
 
     private final ActivityResultLauncher<String[]> picker =
             registerForActivityResult(new ActivityResultContracts.OpenDocument(), uri -> {
@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         OrderStore store = OrderStore.get();
+        store.speed = Order.NORMAL;
 
         tvFileName = findViewById(R.id.tvFileName);
         tvCopies = findViewById(R.id.tvCopies);
@@ -50,13 +51,13 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btnEditPages).setOnClickListener(v -> editPages());
         FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
         if (u != null && u.getEmail() != null) {
-            String n = u.getEmail().split("@")[0];
+            String dn = u.getDisplayName();
+            String n = (dn != null && !dn.trim().isEmpty()) ? dn.trim() : u.getEmail().split("@")[0];
             tvGreeting.setText("Hi, " + n);
+            if (n.length() > 0) ((TextView) findViewById(R.id.tvHomeAvatar)).setText(n.substring(0, 1).toUpperCase());
         }
         btnBw = findViewById(R.id.btnBw);
         btnColor = findViewById(R.id.btnColor);
-        btnNormal = findViewById(R.id.btnNormal);
-        btnUrgent = findViewById(R.id.btnUrgent);
         btnSingle = findViewById(R.id.btnSingle);
         btnDouble = findViewById(R.id.btnDouble);
         btnConfirm = findViewById(R.id.btnConfirm);
@@ -66,8 +67,6 @@ public class HomeActivity extends AppCompatActivity {
 
         btnBw.setOnClickListener(v -> setPrintType(Order.BW));
         btnColor.setOnClickListener(v -> setPrintType(Order.COLOR));
-        btnNormal.setOnClickListener(v -> setSpeed(Order.NORMAL));
-        btnUrgent.setOnClickListener(v -> setSpeed(Order.URGENT));
         btnSingle.setOnClickListener(v -> setSides("single"));
         btnDouble.setOnClickListener(v -> setSides("double"));
 
@@ -317,8 +316,6 @@ public class HomeActivity extends AppCompatActivity {
 
         style(btnBw, store.printType.equals(Order.BW));
         style(btnColor, store.printType.equals(Order.COLOR));
-        style(btnNormal, store.speed.equals(Order.NORMAL));
-        style(btnUrgent, store.speed.equals(Order.URGENT));
         style(btnSingle, store.sides.equals("single"));
         style(btnDouble, store.sides.equals("double"));
 
